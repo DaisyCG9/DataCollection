@@ -28,10 +28,6 @@ namespace authAccess
        
         SDAuthLib sd = new SDAuthLib();
         //string APIurl = "https://api.support.microsoft.com/v2/cases/120072923002610?$expand=Attachment,PartnerCaseReference,SlaItem,Kpi";
-        public void httpHelper()
-        {
-            
-        }
         public async Task<string> GetHttpContentWithTokenAsync(string url, string token)
         {
             var httpClient = new HttpClient();
@@ -167,7 +163,8 @@ namespace authAccess
             {
                 Console.WriteLine("This process failed:{0}", e.Message);
             }
-            FileStream file1 = new FileStream(@"C:\Users\Daisy\Desktop\inf.xls", FileMode.CreateNew, FileAccess.Write);
+            string w = @"C:\Users\Daisy\Desktop\" + "CaseReader_" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".xls";
+            FileStream file1 = new FileStream(w, FileMode.CreateNew, FileAccess.Write);
             workbook.Write(file1);
             file1.Dispose();
         }

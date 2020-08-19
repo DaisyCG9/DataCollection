@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Net.Http;
-using static dotNetEmailReader.writeExcel;
 using NPOI.HSSF.UserModel;
 using static NPOI.XSSF.UserModel.Helpers.ColumnHelper;
 
@@ -37,10 +36,6 @@ namespace authAccess
            
             return id1;
         }
-            public static void ExcelTest()
-            {
-            
-            }
         
     }
 }
