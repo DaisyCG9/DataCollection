@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace authAccess
 {
-    class ContentHelper
-    {
+
         public class Content
         {
-            public int Number { get; set; }
-            public string CaseNumber { get; set; }
             public string Name { get; set; }
             public string Topic { get; set; }
-            public string Region { get; set; }
-            public string SupportLevel { get; set; }
             public string ServiceLevel { get; set; }
             public string SupportCountry { get; set; }
+            public string caseId { get; set; }
+            public DateTime time { get; set; }
+            public string iDate { get; set; }
+            public string iTime { get; set; }
+            public string isTask { get; set; }
+            public string alias { get; set; }
+            public string severity { get; set; }
         }
-    }
+    
 }

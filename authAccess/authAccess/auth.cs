@@ -202,8 +202,6 @@ namespace authAccess
             return false;
         }
 
-
-
         private void ExtractExpiry()
         {
             if (string.IsNullOrEmpty(token))
