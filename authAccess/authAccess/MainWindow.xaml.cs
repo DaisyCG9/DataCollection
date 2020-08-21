@@ -48,9 +48,8 @@ namespace authAccess
                 }).OrderBy(x => x.caseId).ToList();
             foreach (var i in sortedData)
             {
-                ResultText.Text += i.caseId + Environment.NewLine;
-                ResultText.Text += i.alias + Environment.NewLine;
-                ResultText.Text += i.ServiceLevel + Environment.NewLine;
+                ResultText.Text += "CaseId:"+"     "+i.caseId + Environment.NewLine;
+                
             }
             //导出：将数据库中的数据，存储到一个excel中
             //1、查询数据库数据  
@@ -73,7 +72,7 @@ namespace authAccess
             var cellpwd = row.CreateCell(2);
             cellpwd.SetCellValue("Name");
             var time = row.CreateCell(3);
-            time.SetCellValue("Name");
+            time.SetCellValue("Time");
             var cellTopic = row.CreateCell(4);
             cellTopic.SetCellValue("Topic");
             var cellReg = row.CreateCell(5);
@@ -113,7 +112,7 @@ namespace authAccess
             }
             for (int k = 0; k < 10; k++)
             {
-                if(k !=4)
+                //if(k !=4)
                 sheet.AutoSizeColumn(k);
             }
 
@@ -123,6 +122,7 @@ namespace authAccess
             FileStream file1 = new FileStream(w, FileMode.CreateNew, FileAccess.Write);
             workbook.Write(file1);
             file1.Dispose();
+            TokenInfoText.Text += "Data has been written into excel" + Environment.NewLine;
         }
     
         //https://api.support.microsoft.com/v1/cases/120080525000062/history
