@@ -72,7 +72,7 @@ namespace authAccess
                         data.severity = match3.Value;
                     else
                         data.severity = "";
-
+                    //read the data from json
                     string json = await ReadApi(match1.Value);
                    // TokenInfoText.Text += $"Token: {sd.AccessToken}" + Environment.NewLine;
                    // TokenInfoText.Text += $"JSON: {ReadApi}" + Environment.NewLine;
@@ -81,7 +81,8 @@ namespace authAccess
                     data.Topic = dobj["Title"].ToString();
                     data.SupportCountry = dobj["SupportCountry"].ToString();
                     data.ServiceLevel = dobj["EntitlementInformation"]["ServiceLevel"].ToString();
-
+                    data.SLA = "";
+                    data.vertical = "";
                     writeCon.Add(data);
                     //id.Add(match1.Value);
                     //time.Add(mail.EmailDate);
@@ -141,6 +142,7 @@ namespace authAccess
         public async Task<string> ReadApi(string caseId)
         {
             SDAuthLib sd = new SDAuthLib();
+            
             sd.GetSDToken();
             string url = "https://api.support.microsoft.com/v2/cases/";
             StringBuilder APIurl = new StringBuilder(url);

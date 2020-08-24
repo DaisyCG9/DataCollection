@@ -20,6 +20,8 @@ namespace authAccess
             public string isTask { get; set; }
             public string alias { get; set; }
             public string severity { get; set; }
-        }
+            public string vertical { get; set; }
+            public string SLA { get; set; }
+    }
     
 }

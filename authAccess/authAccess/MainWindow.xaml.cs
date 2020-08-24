@@ -31,6 +31,7 @@ namespace authAccess
         {
             CaseIdReader cr = new CaseIdReader();
             List<Content> CR = await cr.CaseNumberReaderAsync();
+            //sort the List ,from the old case to the newest case
             var sortedData =
                (from s in CR
                 select new
@@ -44,7 +45,9 @@ namespace authAccess
                     s.Topic,
                     s.SupportCountry,
                     s.iTime,
-                    s.iDate
+                    s.iDate,
+                    s.SLA,
+                    s.vertical
                 }).OrderBy(x => x.caseId).ToList();
             foreach (var i in sortedData)
             {
@@ -79,9 +82,14 @@ namespace authAccess
             cellReg.SetCellValue("Region");
             var cellsup = row.CreateCell(6);
             cellsup.SetCellValue("Support Level");
+            
             var sev = row.CreateCell(7);
             sev.SetCellValue("Severity");
-            var it = row.CreateCell(8);
+            var sla = row.CreateCell(8);
+            sla.SetCellValue("  SLA  ");
+            var vertical = row.CreateCell(9);
+            vertical.SetCellValue("Vertical");
+            var it = row.CreateCell(10);
             it.SetCellValue("Item Type");
 
             //遍历集合，生成行
@@ -106,13 +114,18 @@ namespace authAccess
                 supportLevel.SetCellValue(sortedData[i].ServiceLevel);
                 var Severity = rowi.CreateCell(7);
                 Severity.SetCellValue(sortedData[i].severity);
-                var ItemType = rowi.CreateCell(8);
+                var S = rowi.CreateCell(8);
+                S.SetCellValue(sortedData[i].SLA);
+                var V = rowi.CreateCell(9);
+                V.SetCellValue(sortedData[i].vertical);
+
+                var ItemType = rowi.CreateCell(10);
                 ItemType.SetCellValue(sortedData[i].isTask);
 
             }
-            for (int k = 0; k < 10; k++)
+            for (int k = 0; k < 14; k++)
             {
-                //if(k !=4)
+                if(k !=4)
                 sheet.AutoSizeColumn(k);
             }
 

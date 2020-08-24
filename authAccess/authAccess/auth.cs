@@ -27,7 +27,7 @@ namespace authAccess
         private static bool bTokenCacheDeserializeAttempted = false;
         private DateTime expiry = DateTime.MinValue;
 
-        private static Microsoft.IdentityModel.Clients.ActiveDirectory.TokenCache myTokenCache = null;
+        private static TokenCache myTokenCache = null;
         //  private string cookieAuthUrl = "";
         public string extraParams;
         private string userUPN = "@microsoft.com";
@@ -62,7 +62,7 @@ namespace authAccess
         {
             ReadOrCreateADALTokenCache();
         }
-        private static void ReadOrCreateADALTokenCache()
+        public static void ReadOrCreateADALTokenCache()
         {   //bTokenCacheDeserializeAttempted初始化为false
             if (!bTokenCacheDeserializeAttempted)
             {
