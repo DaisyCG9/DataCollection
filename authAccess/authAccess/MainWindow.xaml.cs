@@ -49,6 +49,7 @@ namespace authAccess
                     s.SLA,
                     s.vertical
                 }).OrderBy(x => x.caseId).ToList();
+           
             foreach (var i in sortedData)
             {
                 ResultText.Text += "CaseId:"+"     "+i.caseId + Environment.NewLine;
@@ -73,9 +74,9 @@ namespace authAccess
             var date = row.CreateCell(1);
             date.SetCellValue("Date");
             var cellpwd = row.CreateCell(2);
-            cellpwd.SetCellValue("Name");
+            cellpwd.SetCellValue("Time");
             var time = row.CreateCell(3);
-            time.SetCellValue("Time");
+            time.SetCellValue("Name");
             var cellTopic = row.CreateCell(4);
             cellTopic.SetCellValue("Topic");
             var cellReg = row.CreateCell(5);
@@ -130,8 +131,13 @@ namespace authAccess
             }
 
             //DirectoryInfo di = new DirectoryInfo(@"C:\Users\Daisy\Desktop\inf.xls");
+            //string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory);
+            //string path = "E://holiday.json";
+            // path = Path.Combine(path + "\\.xls");
+            string dir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             
-            string w = @"C:\Users\Daisy\Desktop\" + "CaseReader_" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".xls";
+            string w = dir + "\\CaseReader_" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".xls";
+            ResultText.Text += w + Environment.NewLine;
             FileStream file1 = new FileStream(w, FileMode.CreateNew, FileAccess.Write);
             workbook.Write(file1);
             file1.Dispose();

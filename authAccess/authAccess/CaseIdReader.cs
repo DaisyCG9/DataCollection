@@ -37,26 +37,27 @@ namespace authAccess
                     data.iDate = mail.EmailDate.ToString("MM/dd");
                     //data.iTime = mail.EmailDate.ToString("HH:mm");
 
-
+                    //var localFormat = "HH:mm TT";
+                    //data.iTime = mail.EmailDate.ToString("HH:mm tt");
                     string convert = mail.EmailDate.ToString("HHmm");
-                    int conTime = Int16.Parse(convert);
-                     if (conTime>1200)
-                    {
-                        StringBuilder sb1 = new StringBuilder();
-                        sb1.Append(mail.EmailDate.ToString("hh:mm").ToString());
-                        sb1.Append(" PM");
-                        data.iTime = sb1.ToString();
-                    }
-                    else
-                    {
-                        //data.iTime = mail.EmailDate.ToString("hh:mm").ToString() + " AM";
-                        StringBuilder sb2 = new StringBuilder();
-                        sb2.Append(mail.EmailDate.ToString("hh:mm").ToString());
-                        sb2.Append(" AM");
-                        data.iTime = sb2.ToString();
-                    }
-                    
-                   // data.iDate = ;
+                     int conTime = Int16.Parse(convert);
+                      if (conTime>1200)
+                     {
+                         StringBuilder sb1 = new StringBuilder();
+                         sb1.Append(mail.EmailDate.ToString("hh:mm").ToString());
+                         sb1.Append(" PM");
+                         data.iTime = sb1.ToString();
+                     }
+                     else
+                     {
+                         //data.iTime = mail.EmailDate.ToString("hh:mm").ToString() + " AM";
+                         StringBuilder sb2 = new StringBuilder();
+                         sb2.Append(mail.EmailDate.ToString("hh:mm").ToString());
+                         sb2.Append(" AM");
+                         data.iTime = sb2.ToString();
+                     }
+
+                    // data.iDate = ;
                     String pattern2 = @"Task";
                     Match match2 = Regex.Match(CaseReader, pattern2, RegexOptions.IgnoreCase);
                     if (match2.Success)

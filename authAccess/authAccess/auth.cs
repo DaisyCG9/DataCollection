@@ -138,7 +138,7 @@ namespace authAccess
                             //OVERLOADS   PlatformParameters(PromptBehavior)
 
                             Task<AuthenticationResult> task2 = ac.AcquireTokenAsync(adalResourceId, adalClientId,
-                             new Uri(adalRedirectUrl), new PlatformParameters(PromptBehavior.Always),
+                             new Uri(adalRedirectUrl), new PlatformParameters(PromptBehavior.Auto),
                              new UserIdentifier(userUPN, UserIdentifierType.OptionalDisplayableId), extraParams);
                             task2.Wait(30000);
                             token = task2.Result.AccessToken;
