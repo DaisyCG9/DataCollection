@@ -22,8 +22,11 @@ namespace authAccess
     /// </summary>
     public partial class MainWindow : Window
     {
+        SDAuthLib sd = new SDAuthLib();
         private  void CallGraphButton_Click(object sender, RoutedEventArgs e)
         {
+                
+                sd.GetSDToken();
                 ResultWrite();
                 //  CaseIdReader.ExcelTest();     
         }
@@ -142,6 +145,15 @@ namespace authAccess
             workbook.Write(file1);
             file1.Dispose();
             TokenInfoText.Text += "Data has been written into excel" + Environment.NewLine;
+            /*SDAuthLib sd = new SDAuthLib();
+           
+            var e  = sd.Expiry;
+            var a = sd.BypassTokenCache;
+            var c = sd.GetSDToken();
+            TokenInfoText.Text += "sd.Expiry                      "+e + Environment.NewLine;
+            TokenInfoText.Text += "sd.BypassTokenCache     " + a + Environment.NewLine;
+            TokenInfoText.Text += " sd.GetSDToken()         " + c + Environment.NewLine;
+            */
         }
     
         //https://api.support.microsoft.com/v1/cases/120080525000062/history

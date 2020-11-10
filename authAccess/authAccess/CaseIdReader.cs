@@ -19,7 +19,7 @@ namespace authAccess
         public  async Task<List<Content>> CaseNumberReaderAsync()
         {
            
-            int j = 0;
+           // int j = 0;
             List<Content> writeCon = new List<Content>();
             //List<string> id = new List<string>();
             // List<DateTime> time = new List<DateTime>();
@@ -140,11 +140,12 @@ namespace authAccess
             }
 
         }
+        SDAuthLib sd = new SDAuthLib();
         public async Task<string> ReadApi(string caseId)
-        {
-            SDAuthLib sd = new SDAuthLib();
-            
-            sd.GetSDToken();
+        {           
+            sd.GetSDToken();         
+           // var a = sd.Expiry;
+
             string url = "https://api.support.microsoft.com/v2/cases/";
             StringBuilder APIurl = new StringBuilder(url);
             APIurl.Append(String.Format("{0}", HttpUtility.HtmlEncode(caseId)));

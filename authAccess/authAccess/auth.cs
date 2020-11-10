@@ -175,6 +175,7 @@ namespace authAccess
                 //Base64Decoder方法已经不可用
                 /*Base64Decoder base64Decoder = new Base64Decoder(inp.ToCharArray());
                return Encoding.UTF8.GetString(base64Decoder.GetDecoded());*/
+                //this method can't be used now
                 //  https://stackoverflow.com/questions/11743160/how-do-i-encode-and-decode-a-base64-string
                 var base64EncodedBytes = System.Convert.FromBase64String(inp);
                 return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
@@ -244,6 +245,7 @@ namespace authAccess
 
         private static void SaveADALTokenCache()
         {
+
             if (myTokenCache != null)
             {
                 try
