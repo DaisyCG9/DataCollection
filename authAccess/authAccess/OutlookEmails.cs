@@ -6,6 +6,7 @@ namespace authAccess
 {
     public class OutlookEmails
     {
+        private static string sFilter;
         public string EmailFrom { get; set; }
         public string EmailSubject { get; set; }
         public string EmailBody { get; set; }
@@ -26,9 +27,28 @@ namespace authAccess
                 outlookApplication = new Application();
                 outlookNamespace = outlookApplication.GetNamespace("MAPI");
                 inboxFolder = outlookNamespace.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
-                mailItems = inboxFolder.Items;
+                //mailItems = inboxFolder.Items;
+                 DateTime startTime = DateTime.Now;
+                 DateTime endTime = startTime.AddDays(-150);
+                 /*sFilter = "[ReceivedTime] >= '" 
+                                + startTime.ToString("MM/dd/yyyy HH:mm")
+                                + "' AND [ReceivedTime] <= '"
+                                + endTime.ToString("MM/dd/yyyy HH:mm") + "'";
+                 */
+                sFilter = "[ReceivedTime] <= '"
+                                + startTime.ToString("MM/dd/yyyy HH:mm")
+                                + "' AND [ReceivedTime] >= '"
+                                + endTime.ToString("MM/dd/yyyy HH:mm") + "'";
+                //    04/30/2020 14:53
+                //sFilter = "[ReceivedTime] >= '07/05/2020 00:00' AND [ReceivedTime] <= '09/05/2020 00:00' ";
+
+                //mailItems = mailItems.Restrict("[ReceivedTime] > '" + dt.ToString("MM/dd/yyyy hh:mm:ss tt") + "'");
+                //mailItems = mailItems.Restrict("[ReceivedTime] > '" + dt.ToString("MM/dd/yyyy HH:mm") + "'");
+                mailItems = inboxFolder.Items.Restrict(sFilter);
+                 //mailItems.Restrict(sFilter);
+                 //foreach (dynamic item in mailItems)
                 foreach (dynamic item in mailItems)
-                {
+                  {
                     if (item is MailItem)
                     {
                         emailDetails = new OutlookEmails();

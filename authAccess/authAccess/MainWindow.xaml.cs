@@ -22,18 +22,22 @@ namespace authAccess
     /// </summary>
     public partial class MainWindow : Window
     {
-        SDAuthLib sd = new SDAuthLib();
         private  void CallGraphButton_Click(object sender, RoutedEventArgs e)
         {
-                
-                sd.GetSDToken();
-                ResultWrite();
+            
+            SDAuthLib sd = new SDAuthLib();
+            sd.GetSDToken();
+            //SDAuthLib.ReadOrCreateADALTokenCache();
+           
+            string token = sd.AccessToken;
+            ResultWrite(token);
+            sd.ClearToken();
                 //  CaseIdReader.ExcelTest();     
         }
-        public async void ResultWrite()
+        public async void ResultWrite(string token)
         {
             CaseIdReader cr = new CaseIdReader();
-            List<Content> CR = await cr.CaseNumberReaderAsync();
+            List<Content> CR = await cr.CaseNumberReaderAsync(token);
             //sort the List ,from the old case to the newest case
             var sortedData =
                (from s in CR

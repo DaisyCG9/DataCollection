@@ -16,10 +16,12 @@ namespace authAccess
     class CaseIdReader
     {
 
-        public  async Task<List<Content>> CaseNumberReaderAsync()
+        public  async Task<List<Content>> CaseNumberReaderAsync(string token)
         {
-           
-           // int j = 0;
+            //SDAuthLib sd = new SDAuthLib();
+            //sd.GetSDToken();
+           // string token = sd.AccessToken;
+            // int j = 0;
             List<Content> writeCon = new List<Content>();
             //List<string> id = new List<string>();
             // List<DateTime> time = new List<DateTime>();
@@ -74,7 +76,7 @@ namespace authAccess
                     else
                         data.severity = "";
                     //read the data from json
-                    string json = await ReadApi(match1.Value);
+                    string json = await ReadApi(match1.Value,token);
                    // TokenInfoText.Text += $"Token: {sd.AccessToken}" + Environment.NewLine;
                    // TokenInfoText.Text += $"JSON: {ReadApi}" + Environment.NewLine;
                     dynamic dobj = JsonConvert.DeserializeObject<dynamic>(json);
@@ -140,11 +142,12 @@ namespace authAccess
             }
 
         }
-        SDAuthLib sd = new SDAuthLib();
-        public async Task<string> ReadApi(string caseId)
-        {           
-            sd.GetSDToken();         
-           // var a = sd.Expiry;
+        
+        public async Task<string> ReadApi(string caseId,string token)
+        {
+            //SDAuthLib sd = new SDAuthLib();
+           // sd.GetSDToken();
+            // var a = sd.Expiry;
 
             string url = "https://api.support.microsoft.com/v2/cases/";
             StringBuilder APIurl = new StringBuilder(url);
@@ -152,7 +155,7 @@ namespace authAccess
             APIurl.Append(String.Format("{0}", HttpUtility.HtmlEncode("?$expand=Attachment,PartnerCaseReference,SlaItem,Kpi")));
             // Console.WriteLine(APIurl);
             string api = APIurl.ToString();
-            string ApiJson = await GetHttpContentWithTokenAsync(api, sd.AccessToken);
+            string ApiJson = await GetHttpContentWithTokenAsync(api, token);
             //ResultText.Text += sd.AccessToken + Environment.NewLine;
             return ApiJson;
         }

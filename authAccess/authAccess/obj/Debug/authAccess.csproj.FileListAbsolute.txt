@@ -102,7 +102,6 @@ C:\GitHubMs\DataCollection\authAccess\authAccess\bin\Debug\Microsoft.IdentityMod
 C:\GitHubMs\DataCollection\authAccess\authAccess\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.xml
 C:\GitHubMs\DataCollection\authAccess\authAccess\bin\Debug\Nancy.xml
 C:\GitHubMs\DataCollection\authAccess\authAccess\bin\Debug\Newtonsoft.Json.xml
-C:\GitHubMs\DataCollection\authAccess\authAccess\obj\Debug\authAccess.csprojAssemblyReference.cache
 C:\GitHubMs\DataCollection\authAccess\authAccess\obj\Debug\MainWindow.g.cs
 C:\GitHubMs\DataCollection\authAccess\authAccess\obj\Debug\App.g.cs
 C:\GitHubMs\DataCollection\authAccess\authAccess\obj\Debug\authAccess_MarkupCompile.cache
@@ -115,3 +114,4 @@ C:\GitHubMs\DataCollection\authAccess\authAccess\obj\Debug\authAccess.csproj.Cor
 C:\GitHubMs\DataCollection\authAccess\authAccess\obj\Debug\authAccess.csproj.CopyComplete
 C:\GitHubMs\DataCollection\authAccess\authAccess\obj\Debug\authAccess.exe
 C:\GitHubMs\DataCollection\authAccess\authAccess\obj\Debug\authAccess.pdb
+C:\GitHubMs\DataCollection\authAccess\authAccess\obj\Debug\authAccess.csprojAssemblyReference.cache

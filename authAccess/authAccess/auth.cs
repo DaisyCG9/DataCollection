@@ -104,7 +104,7 @@ namespace authAccess
             }
 
             ReadSDToken(serviceName, ref token, ref expiry);
-
+            //AuthenticationResult authResult = null;
             if (!Valid())
             {
                 lock (serializer)
@@ -115,8 +115,10 @@ namespace authAccess
                     {
 
                         Task<AuthenticationResult> task = ac.AcquireTokenSilentAsync(adalResourceId, adalClientId, new UserIdentifier(userUPN, UserIdentifierType.OptionalDisplayableId));
-                        task.Wait(30000);
-                        token = task.Result.AccessToken;
+                        // task.Wait(30000);
+                        // authResult = await ac.AcquireTokenSilentAsync(adalResourceId, adalClientId, new UserIdentifier(userUPN, UserIdentifierType.OptionalDisplayableId));
+                         token = task.Result.AccessToken;
+                        //token = authResult.AccessToken;
                         Console.WriteLine("Token is " + token);
                         ExtractExpiry();
                         SaveADALTokenCache();
